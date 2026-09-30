@@ -13,7 +13,7 @@ Contains a color enum. Creates an object, ConsoleColor, which stores the ANSI es
 
 ## ColorPrinter.java / ColorPrinterTest.java
 
-
+Contains the ColorPrinter constructor. Prints lines with color using ConsoleColor and a variety of output functions. Has a getter and setter.
 
 ## TruffulaOptions.java / TruffulaOptionsTest.java
 
