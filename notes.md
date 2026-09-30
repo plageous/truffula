@@ -17,6 +17,8 @@ Contains the ColorPrinter constructor. Prints lines with color using ConsoleColo
 
 ## TruffulaOptions.java / TruffulaOptionsTest.java
 
+Controls specific options with command line inputs. Harder to understand, but I think it returns the directories intended to be sent to TruffulaPrinter?
+
 ## TruffulaPrinter.java / TruffulaPrinterTest.java
 
 ## AlphabeticalFileSorter.java
