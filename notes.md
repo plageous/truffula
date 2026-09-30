@@ -5,7 +5,11 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 
 ## App.java
 
+The face of Truffula. Accepts a couple flags and a directory in a string. Probably calls other .java files like the options and printer files based on what's inputted.
+
 ## ConsoleColor.java
+
+
 
 ## ColorPrinter.java / ColorPrinterTest.java
 
