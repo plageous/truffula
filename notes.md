@@ -9,9 +9,11 @@ The face of Truffula. Accepts a couple flags and a directory in a string. Probab
 
 ## ConsoleColor.java
 
-
+Contains a color enum. Creates an object, ConsoleColor, which stores the ANSI escape code. Returns said escape code through getCode() and toString(). Will probably be used with specified print statements.
 
 ## ColorPrinter.java / ColorPrinterTest.java
+
+
 
 ## TruffulaOptions.java / TruffulaOptionsTest.java
 
