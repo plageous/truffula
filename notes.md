@@ -21,4 +21,6 @@ Controls specific options with command line inputs. Harder to understand, but I 
 
 ## TruffulaPrinter.java / TruffulaPrinterTest.java
 
+Prints! Outputs paths by printing them with the requested colors and their children, signifying hierarchy through indentation.
+
 ## AlphabeticalFileSorter.java
