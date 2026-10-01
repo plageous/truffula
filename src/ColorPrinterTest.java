@@ -36,7 +36,7 @@ class ColorPrinterTest {
     ColorPrinter printer = new ColorPrinter(printStream);
     printer.setCurrentColor(ConsoleColor.BLUE);
 
-    // Act: Print the message
+    // Act: Print the messages
     String message1 = "Dies Irae, ";
     String message2 = "Dies Illa";
     printer.print(message1);
@@ -57,7 +57,7 @@ class ColorPrinterTest {
     ColorPrinter printer = new ColorPrinter(printStream);
     printer.setCurrentColor(ConsoleColor.BLUE);
 
-    // Act: Print the message
+    // Act: Print the messages
     String message1 = "Dies Irae, ";
     String message2 = "Dies Illa";
     printer.print(message1, false);
@@ -78,7 +78,7 @@ class ColorPrinterTest {
     ColorPrinter printer = new ColorPrinter(printStream);
     printer.setCurrentColor(ConsoleColor.BLUE);
 
-    // Act: Print the message
+    // Act: Print the messages and change colors
     String message1 = "Soli ";
     String message2 = "Deo ";
     String message3 = "Gloria";
