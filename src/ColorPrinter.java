@@ -87,6 +87,10 @@ public class ColorPrinter {
    */
   public void print(String message, boolean reset) {
     // TODO: Implement this!
+    String output = getCurrentColor().getCode() + message + System.lineSeparator();
+    if (reset) {
+      output += ConsoleColor.RESET;
+    }
   }
 
   /**
