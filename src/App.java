@@ -43,6 +43,6 @@ public class App {
   public static void main(String[] args) throws Exception {
     TruffulaOptions truffulaOptions = new TruffulaOptions(args);
     TruffulaPrinter truffulaPrinter = new TruffulaPrinter(truffulaOptions);
-    truffulaPrinter.printTree();
+    truffulaPrinter.printTree(truffulaOptions);
   }
 }
