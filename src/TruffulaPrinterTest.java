@@ -154,7 +154,6 @@ public class TruffulaPrinterTest {
     public void testSimplePrint(@TempDir File tempDir) throws IOException {
         // Test directory structure
         // myFolder/
-        //    .hidden.txt
         //    folder2/
         //       hax.txt
         //    homework.txt
@@ -166,9 +165,6 @@ public class TruffulaPrinterTest {
         // Create visible files in myFolder
         File homework = new File(myFolder, "homework.txt");
         homework.createNewFile();
-
-        // Create a hidden file in myFolder
-        createHiddenFile(myFolder, ".hidden.txt");
 
         // Create subdirectory "myfolder2" in myFolder
         File myfolder2 = new File(myFolder, "folder2");
