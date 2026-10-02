@@ -122,7 +122,7 @@ public class TruffulaPrinterTest {
         TruffulaPrinter printer = new TruffulaPrinter(options, printStream);
 
         // Call printTree (output goes to printStream)
-        printer.printTree();
+        printer.printTree(options);
 
         // Retrieve printed output
         String output = baos.toString();
@@ -208,7 +208,7 @@ public class TruffulaPrinterTest {
         TruffulaPrinter printer = new TruffulaPrinter(options, printStream);
 
         // Call printTree (output goes to printStream)
-        printer.printTree();
+        printer.printTree(options);
 
         // Retrieve printed output
         String output = baos.toString();
