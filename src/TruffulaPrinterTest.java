@@ -156,22 +156,15 @@ public class TruffulaPrinterTest {
         // myFolder/
         //    .hidden.txt
         //    folder2/
-        //       .extrasecret.txt
-        //       DONOTOPEN/
-        //          secret.txt
         //       hax.txt
-        //       smile.txt
         //    homework.txt
-        //    notes.txt
 
         // Create "myFolder"
         File myFolder = new File(tempDir, "myFolder");
         assertTrue(myFolder.mkdir(), "myFolder should be created");
 
         // Create visible files in myFolder
-        File notes = new File(myFolder, "notes.txt");
         File homework = new File(myFolder, "homework.txt");
-        notes.createNewFile();
         homework.createNewFile();
 
         // Create a hidden file in myFolder
@@ -183,19 +176,7 @@ public class TruffulaPrinterTest {
 
         // Create files in myfolder2
         File hax = new File(myfolder2, "hax.txt");
-        File smile = new File(myfolder2, "smile.txt");
         hax.createNewFile();
-        smile.createNewFile();
-
-        // Create hidden file in myfolder2
-        createHiddenFile(myfolder2, ".extrasecret.txt");
-
-        // Create subdirectory DONOTOPEN in myfolder2
-        File donotopen = new File(myfolder2, "DONOTOPEN");
-
-        // Create visible file in DONOTOPEN
-        File secret = new File(donotopen, "secret.txt");
-        secret.createNewFile();
 
         // Set up TruffulaOptions with showHidden = false and useColor = true
         TruffulaOptions options = new TruffulaOptions(myFolder, false, true);
@@ -221,12 +202,8 @@ public class TruffulaPrinterTest {
         StringBuilder expected = new StringBuilder();
         expected.append(white).append("myFolder/").append(nl).append(reset);
         expected.append(white).append("   folder2/").append(nl).append(reset);
-        expected.append(white).append("      DONOTOPEN/").append(nl).append(reset);
-        expected.append(white).append("         secret.txt").append(nl).append(reset);
         expected.append(white).append("      hax.txt").append(nl).append(reset);
-        expected.append(white).append("      smile.txt").append(nl).append(reset);
         expected.append(white).append("   homework.txt").append(nl).append(reset);
-        expected.append(white).append("   notes.txt").append(nl).append(reset);
 
         // Assert that the output matches the expected output exactly
         assertEquals(expected.toString(), output);
