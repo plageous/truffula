@@ -113,17 +113,21 @@ public class TruffulaPrinter {
     // DO NOT USE SYSTEM.OUT.PRINTLN
     // USE out.println instead (will use your ColorPrinter)
 
-    out.println("printTree was called!");
-    out.println("My options are: " + options);
-    out.println("Printing files...");
     printTree(to.getRoot(), 0);
   }
 
   private void printTree(File file, int level) {
     String output = "";
+    // indentation for directory level
     for (int i = 0; i < level ; i++) output += "   ";
+    // filename
     output += file.getName();
+    // directory extension for output if the file is a directory
+    if (file.isDirectory()) output += "/";
+
     out.println(output);
+
+    // recursion
     if (file.isDirectory()) {
       for (File subfile : file.listFiles()) {
         printTree(subfile, level + 1);
