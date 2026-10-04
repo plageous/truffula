@@ -113,24 +113,46 @@ public class TruffulaPrinter {
     // DO NOT USE SYSTEM.OUT.PRINTLN
     // USE out.println instead (will use your ColorPrinter)
 
-    printTree(to.getRoot(), 0);
+    printTree(to.getRoot(), 0, to.isShowHidden());
   }
-
-  private void printTree(File file, int level) {
+  
+  /**
+   * Helper method to printTree. Recursively moves through file trees, printing the name of the files
+   * and indenting them based on their file level.
+   * 
+   * @param file The current file.
+   * @param level The current file level. This is relative to the root file.
+   * @param showHidden Shows hidden files while true, doesn't when false.
+   */
+  private void printTree(File file, int level, boolean showHidden) {
     String output = "";
+
     // indentation for directory level
     for (int i = 0; i < level ; i++) output += "   ";
-    // filename
-    output += file.getName();
-    // directory extension for output if the file is a directory
-    if (file.isDirectory()) output += "/";
+
+    // if file IS hidden
+    if (file.isHidden()) {
+      // if true ADD file to output
+      // else DO NOTHING
+      if (showHidden) {
+        output += file.getName();
+        // directory extension for output if the file is a directory
+        if (file.isDirectory()) output += "/";
+      }
+    // if file IS NOT hidden
+    } else {
+      output += file.getName();
+      // directory extension for output if the file is a directory
+      if (file.isDirectory()) output += "/";
+    }
+    
 
     out.println(output);
 
     // recursion
     if (file.isDirectory()) {
       for (File subfile : file.listFiles()) {
-        printTree(subfile, level + 1);
+        printTree(subfile, level + 1, showHidden);
       }  
     }
   }
