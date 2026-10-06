@@ -116,20 +116,15 @@ public class TruffulaOptions  {
     root = dir;
     boolean hide = false;
     boolean color = true;
-    String recieved = "";
-
-    for (String arg : args) {
-      recieved += arg + " ";
-    }
 
     // recognizes only path and accepted flags
-    for (int i = 0; i < args.length - 2; i++) {
+    for (int i = 0; i < args.length - 1; i++) {
       if (args[i].equals("-h")) {
         hide = true;
       } else if (args[i].equals("-nc")) {
         color = false;
       } else {
-        throw new IllegalArgumentException("Unrecognized flags." + recieved);
+        throw new IllegalArgumentException("Unrecognized flags: " + args[i]);
       }
     }
     showHidden = hide;
