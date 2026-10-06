@@ -130,7 +130,7 @@ public class TruffulaPrinter {
     String output = "";
 
     // adds a color code to the beginning of the message if printing in color is permitted.
-    if (showColor) output += DEFAULT_COLOR_SEQUENCE.get(colorIndex);
+    if (showColor) out.setCurrentColor(DEFAULT_COLOR_SEQUENCE.get(colorIndex));
 
     // indentation for directory level
     for (int i = 0; i < level ; i++) output += "   ";
