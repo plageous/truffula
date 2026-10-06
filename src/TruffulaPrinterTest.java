@@ -274,4 +274,72 @@ public class TruffulaPrinterTest {
         // Assert that the output matches the expected output exactly
         assertEquals(expected.toString(), output);
     }
+
+    @Test
+    void testDefaultColorPrinting(@TempDir File tempDir) throws IOException {
+        // Build the example directory structure:
+        // myFolder/
+        //    purpleFolder/
+        //       yellowFolder/
+        //          whiteFolder/
+        //             purpleAgain/
+        //                yellowAgain/
+        //                   white.txt
+
+        // Create tree (more like linked list) of folders
+        File myFolder = new File(tempDir, "myFolder");
+        assertTrue(myFolder.mkdir(), "myFolder should be created");
+        
+        File purpleFolder = new File(myFolder, "purpleFolder");
+        assertTrue(purpleFolder.mkdir(), "purpleFolder should be created");
+
+        File yellowFolder = new File(purpleFolder, "yellowFolder");
+        assertTrue(yellowFolder.mkdir(), "yellowFolder should be created");
+
+        File whiteFolder = new File(yellowFolder, "whiteFolder");
+        assertTrue(whiteFolder.mkdir(), "whiteFolder should be created");
+
+        File purpleAgain = new File(whiteFolder, "purpleAgain");
+        assertTrue(purpleAgain.mkdir(), "purpleAgain should be created");
+
+        File yellowAgain = new File(purpleAgain, "yellowAgain");
+        assertTrue(yellowAgain.mkdir(), "yellowAgain should be created.");
+
+        File whiteFile = new File(yellowAgain, "white.txt");
+        whiteFile.createNewFile();
+
+        // Set up TruffulaOptions with showHidden = false and useColor = true
+        TruffulaOptions options = new TruffulaOptions(myFolder, false, false);
+
+        // Capture output using a custom PrintStream
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(baos);
+
+        // Instantiate TruffulaPrinter with custom PrintStream
+        TruffulaPrinter printer = new TruffulaPrinter(options, printStream);
+
+        // Call printTree (output goes to printStream)
+        printer.printTree(options);
+
+        // Retrieve printed output
+        String output = baos.toString();
+        String nl = System.lineSeparator();
+
+        // Build expected output with exact colors and indentation
+        ConsoleColor reset = ConsoleColor.RESET;
+        ConsoleColor white = ConsoleColor.WHITE;
+
+        StringBuilder expected = new StringBuilder();
+        expected.append(white).append("myFolder/").append(nl).append(reset);
+        expected.append(white).append("   hiddenFolder/").append(nl).append(reset);
+        expected.append(white).append("      .hidden1.txt").append(nl).append(reset);
+        expected.append(white).append("      .hidden2.txt").append(nl).append(reset);
+        expected.append(white).append("   publicFolder/").append(nl).append(reset);
+        expected.append(white).append("      public1.txt").append(nl).append(reset);
+        expected.append(white).append("      public2.txt").append(nl).append(reset);
+        
+
+        // Assert that the output matches the expected output exactly
+        assertEquals(expected.toString(), output);
+    }
 }
