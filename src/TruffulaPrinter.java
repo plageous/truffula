@@ -127,8 +127,8 @@ public class TruffulaPrinter {
   private void printTree(File file, int level, boolean showHidden, boolean showColor, int colorIndex) {
     String output = "";
 
-    if () {
-
+    if (showColor) {
+      output += DEFAULT_COLOR_SEQUENCE.get(colorIndex);
     }
 
     // indentation for directory level
@@ -156,7 +156,7 @@ public class TruffulaPrinter {
     // recursion
     if (file.isDirectory()) {
       for (File subfile : file.listFiles()) {
-        printTree(subfile, level + 1, showHidden, (colorIndex + 1) % DEFAULT_COLOR_SEQUENCE.size());
+        printTree(subfile, level + 1, showHidden, showColor, (colorIndex + 1) % DEFAULT_COLOR_SEQUENCE.size());
       }  
     }
   }
