@@ -123,13 +123,14 @@ public class TruffulaPrinter {
    * @param file The current file.
    * @param level The current file level. This is relative to the root file.
    * @param showHidden Shows hidden files while true, doesn't when false.
+   * @param showColor Adds the default color tags to the beginning of the message if true, doesn't if false.
+   * @param colorIndex Current index inside the list of default colors.
    */
   private void printTree(File file, int level, boolean showHidden, boolean showColor, int colorIndex) {
     String output = "";
 
-    if (showColor) {
-      output += DEFAULT_COLOR_SEQUENCE.get(colorIndex);
-    }
+    // adds a color code to the beginning of the message if printing in color is permitted.
+    if (showColor) output += DEFAULT_COLOR_SEQUENCE.get(colorIndex);
 
     // indentation for directory level
     for (int i = 0; i < level ; i++) output += "   ";
