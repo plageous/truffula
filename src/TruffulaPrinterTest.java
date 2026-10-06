@@ -309,7 +309,7 @@ public class TruffulaPrinterTest {
         whiteFile.createNewFile();
 
         // Set up TruffulaOptions with showHidden = false and useColor = true
-        TruffulaOptions options = new TruffulaOptions(myFolder, false, false);
+        TruffulaOptions options = new TruffulaOptions(myFolder, false, true);
 
         // Capture output using a custom PrintStream
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -328,16 +328,17 @@ public class TruffulaPrinterTest {
         // Build expected output with exact colors and indentation
         ConsoleColor reset = ConsoleColor.RESET;
         ConsoleColor white = ConsoleColor.WHITE;
+        ConsoleColor purple = ConsoleColor.PURPLE;
+        ConsoleColor yellow = ConsoleColor.YELLOW;
 
         StringBuilder expected = new StringBuilder();
         expected.append(white).append("myFolder/").append(nl).append(reset);
-        expected.append(white).append("   hiddenFolder/").append(nl).append(reset);
-        expected.append(white).append("      .hidden1.txt").append(nl).append(reset);
-        expected.append(white).append("      .hidden2.txt").append(nl).append(reset);
-        expected.append(white).append("   publicFolder/").append(nl).append(reset);
-        expected.append(white).append("      public1.txt").append(nl).append(reset);
-        expected.append(white).append("      public2.txt").append(nl).append(reset);
-        
+        expected.append(purple).append("   purpleFolder/").append(nl).append(reset);
+        expected.append(yellow).append("      yellowFolder/").append(nl).append(reset);
+        expected.append(white).append("         whiteFolder/").append(nl).append(reset);
+        expected.append(purple).append("            purpleAgain/").append(nl).append(reset);
+        expected.append(yellow).append("               yellowAgain/").append(nl).append(reset);
+        expected.append(white).append("                  white.txt").append(nl).append(reset);
 
         // Assert that the output matches the expected output exactly
         assertEquals(expected.toString(), output);
