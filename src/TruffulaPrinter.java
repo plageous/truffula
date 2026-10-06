@@ -113,7 +113,7 @@ public class TruffulaPrinter {
     // DO NOT USE SYSTEM.OUT.PRINTLN
     // USE out.println instead (will use your ColorPrinter)
 
-    printTree(to.getRoot(), 0, to.isShowHidden());
+    printTree(to.getRoot(), 0, to.isShowHidden(), to.isUseColor(), 0);
   }
   
   /**
@@ -124,8 +124,12 @@ public class TruffulaPrinter {
    * @param level The current file level. This is relative to the root file.
    * @param showHidden Shows hidden files while true, doesn't when false.
    */
-  private void printTree(File file, int level, boolean showHidden) {
+  private void printTree(File file, int level, boolean showHidden, boolean showColor, int colorIndex) {
     String output = "";
+
+    if () {
+
+    }
 
     // indentation for directory level
     for (int i = 0; i < level ; i++) output += "   ";
@@ -152,7 +156,7 @@ public class TruffulaPrinter {
     // recursion
     if (file.isDirectory()) {
       for (File subfile : file.listFiles()) {
-        printTree(subfile, level + 1, showHidden);
+        printTree(subfile, level + 1, showHidden, (colorIndex + 1) % DEFAULT_COLOR_SEQUENCE.size());
       }  
     }
   }
