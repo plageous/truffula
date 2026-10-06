@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 /**
  * Represents configuration options for controlling how a directory tree is displayed.
@@ -102,6 +103,7 @@ public class TruffulaOptions  {
    */
   public TruffulaOptions(String[] args) throws IllegalArgumentException, FileNotFoundException {
     // Sets filepath to last value in args
+    System.out.println(args[args.length - 1]);
     File dir = new File(args[args.length - 1]);
     if (!dir.exists()) {
       root = null;
@@ -114,17 +116,20 @@ public class TruffulaOptions  {
     root = dir;
     boolean hide = false;
     boolean color = true;
+    String recieved = "";
+
+    for (String arg : args) {
+      recieved += arg + " ";
+    }
 
     // recognizes only path and accepted flags
-    for (String arg : args) {
-      if (arg.equals("-h")) {
+    for (int i = 0; i < args.length - 2; i++) {
+      if (args[i].equals("-h")) {
         hide = true;
-      } else if (arg.equals("-nc")) {
+      } else if (args[i].equals("-nc")) {
         color = false;
-      } else if (arg.equals(dir.toString())) {
-        // do nothing
       } else {
-        throw new IllegalArgumentException("Unrecognized flags.");
+        throw new IllegalArgumentException("Unrecognized flags." + recieved);
       }
     }
     showHidden = hide;
