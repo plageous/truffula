@@ -150,7 +150,6 @@ public class TruffulaPrinter {
       // directory extension for output if the file is a directory
       if (file.isDirectory()) output += "/";
     }
-    
 
     out.println(output);
 

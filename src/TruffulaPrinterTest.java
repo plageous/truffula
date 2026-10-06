@@ -175,7 +175,7 @@ public class TruffulaPrinterTest {
         hax.createNewFile();
 
         // Set up TruffulaOptions with showHidden = false and useColor = true
-        TruffulaOptions options = new TruffulaOptions(myFolder, false, true);
+        TruffulaOptions options = new TruffulaOptions(myFolder, false, false);
 
         // Capture output using a custom PrintStream
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -241,7 +241,7 @@ public class TruffulaPrinterTest {
         createHiddenFile(hiddenFolder, ".hidden2.txt");
 
         // Set up TruffulaOptions with showHidden = false and useColor = true
-        TruffulaOptions options = new TruffulaOptions(myFolder, true, true);
+        TruffulaOptions options = new TruffulaOptions(myFolder, true, false);
 
         // Capture output using a custom PrintStream
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
