@@ -148,8 +148,10 @@ public class TruffulaPrinter {
     // increments level by 1 every file going down
     // increments colorIndex by 1, resetting it to 0 if the end of the list is hit
     if (file.isDirectory()) {
-      for (File subfile : AlphabeticalFileSorter.sort(file.listFiles())) {
-        printTree(subfile, level + 1, showHidden, showColor, (colorIndex + 1) % DEFAULT_COLOR_SEQUENCE.size());
+      if (file.listFiles() != null) {
+        for (File subfile : AlphabeticalFileSorter.sort(file.listFiles())) {
+          printTree(subfile, level + 1, showHidden, showColor, (colorIndex + 1) % DEFAULT_COLOR_SEQUENCE.size());
+        }
       }  
     }
   }
